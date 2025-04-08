@@ -34,7 +34,7 @@
                 </div>
 
                 <div class="d-flex justify-content-end gap-2">
-                    <button type="submit" class="btn btn-primary">
+                    <button type="submit" class="btn btn-warning">
                         <i class="bi bi-save me-1"></i> Atualizar
                     </button>
                     <a href="{{ route('produtos.index') }}" class="btn btn-secondary">
