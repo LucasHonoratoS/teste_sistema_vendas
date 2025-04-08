@@ -26,6 +26,7 @@ Este projeto foi desenvolvido como solução para um desafio técnico com prazo 
 ### 👥 Clientes e Produtos
 - Cadastro completo de clientes e produtos
 - Associação de vendas com produtos cadastrados
+- Eu optei por não implementar um validador de CPF no cadastro de clientes, pois não era o foco da atividade
 
 ### 📑 Geração de PDF
 - Resumo da venda em PDF
