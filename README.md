@@ -52,8 +52,8 @@ Este projeto foi desenvolvido como solução para um desafio técnico com prazo 
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/LucasHonoratoS/teste_sistema_vendas.git
+cd teste_sistema_vendas
 ```
 
 ### 2. Instale as dependências
