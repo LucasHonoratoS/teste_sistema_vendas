@@ -95,8 +95,8 @@
                         <div class="row mb-2">
                             <div class="col-md-6">
                                 <label class="form-label">Valor da Parcela</label>
-                                <input type="text" name="parcelas[]" class="form-control"
-                                    value="{{ number_format($parcela->valor, 2, ',', '.') }}">
+                                <input type="number" name="parcelas[]" class="form-control"
+                                    value="{{ number_format($parcela->valor, 2, '.', '') }}" step="0.01">
                                 <input type="hidden" name="parcelas_originais[]" value="{{ number_format($parcela->valor, 2, ',', '.') }}">
                             </div>
                             <div class="col-md-6">
@@ -114,10 +114,9 @@
                 </div>
             </div>
         </div>
-
         <div class="d-flex justify-content-end gap-2 mt-4">
-            <button type="submit" class="btn btn-success">
-                <i class="bi bi-check-circle me-1"></i> Atualizar
+            <button type="submit" class="btn btn-warning">
+                <i class="bi bi-save me-1"></i> Atualizar
             </button>
             <a href="{{ route('vendas.index') }}" class="btn btn-secondary">
                 <i class="bi bi-x-circle me-1"></i> Cancelar
