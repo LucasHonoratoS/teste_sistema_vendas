@@ -60,7 +60,7 @@ cd teste_sistema_vendas
 
 ```bash
 composer install
-npm install && npm run dev
+npm install && npm run build
 ```
 
 ### 3. Configure o ambiente
