@@ -7,6 +7,7 @@
                 <th>Produtos</th>
                 <th>Data</th>
                 <th>Total</th>
+                <th>Forma de Pagamento</th>
                 <th>Ações</th>
             </tr>
         </thead>
@@ -14,7 +15,7 @@
             @foreach ($vendas as $venda)
                 <tr>
                     <td>{{ $venda->id }}</td>
-                    <td>{{ $venda->cliente->nome }}</td>
+                    <td>{{ $venda->cliente->nome ?? '' }}</td>
                     <td>
                         <ul class="list-unstyled mb-0">
                             @foreach ($venda->itens as $item)
@@ -24,6 +25,7 @@
                     </td>
                     <td>{{ $venda->created_at->format('d/m/Y') }}</td>
                     <td>R$ {{ number_format($venda->total, 2, ',', '.') }}</td>
+                    <td>{{ $venda->forma_pagamento }}</td>
                     <td>
                         <a href="{{ route('vendas.edit', $venda) }}" class="btn btn-sm btn-warning">Editar</a>
                         <form action="{{ route('vendas.destroy', $venda) }}" method="POST" class="d-inline" onsubmit="return confirm('Tem certeza que deseja excluir?')">
@@ -31,6 +33,9 @@
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger">Excluir</button>
                         </form>
+                        <a href="{{ route('vendas.pdf', $venda->id) }}" class="btn btn-outline-secondary" target="_blank">
+                            Baixar PDF
+                        </a>
                     </td>
                 </tr>
             @endforeach

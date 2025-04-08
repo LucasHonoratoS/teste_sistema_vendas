@@ -1,21 +1,34 @@
-<div class="item-venda border p-3 mb-3 rounded">
-    <div class="row">
-        <div class="col-md-6 mb-2">
-            <label class="form-label">Produto</label>
-            <select name="produtos[]" class="form-select produto-select" onchange="calcularTotal()">
-                <option value="">Selecione</option>
+@php
+    // Verifica se está em modo de edição (variáveis vindas do controller)
+    $produtoSelecionado = $item->produto_id ?? null;
+    $quantidade = $item->quantidade ?? 1;
+@endphp
+
+<div class="item-venda border rounded-3 p-4 mb-3 shadow-sm">
+    <div class="row g-3 align-items-end">
+        <div class="col-md-6">
+            <label class="form-label fw-semibold">Produto</label>
+            <select name="produtos[]" class="form-select produto-select" onchange="calcularTotal()" required>
+                <option value="">Selecione um produto</option>
                 @foreach ($produtos as $produto)
-                    <option value="{{ $produto->id }}" data-preco="{{ $produto->preco }}">{{ $produto->nome }}</option>
+                    <option value="{{ $produto->id }}"
+                        data-preco="{{ $produto->preco }}"
+                        {{ $produtoSelecionado == $produto->id ? 'selected' : '' }}>
+                        {{ $produto->nome }}
+                    </option>
                 @endforeach
             </select>
         </div>
-        <div class="col-md-4 mb-2">
-            <label class="form-label">Quantidade</label>
-            <input type="number" name="quantidades[]" class="form-control quantidade-input" value="1" min="1" oninput="calcularTotal()">
+
+        <div class="col-md-4">
+            <label class="form-label fw-semibold">Quantidade</label>
+            <input type="number" name="quantidades[]" class="form-control quantidade-input"
+                value="{{ $quantidade }}" min="1" oninput="calcularTotal()" required>
         </div>
-        <div class="col-md-2 d-flex align-items-end">
-            <button type="button" class="btn btn-danger w-100" onclick="removerItem(this)">
-                <i class="bi bi-trash"></i> Remover
+
+        <div class="col-md-2 text-end">
+            <button type="button" class="btn btn-outline-danger w-100" onclick="removerItem(this)">
+                <i class="bi bi-trash3 me-1"></i> Remover
             </button>
         </div>
     </div>

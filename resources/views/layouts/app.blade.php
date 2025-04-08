@@ -12,10 +12,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-    {{-- Navbar --}}
     @include('layouts.navigation')
 
-    {{-- Page Header --}}
     @isset($header)
         <header class="bg-white shadow py-3 mb-4">
             <div class="container">
@@ -24,12 +22,12 @@
         </header>
     @endisset
 
-    {{-- Conteúdo principal --}}
     <main class="container">
         @yield('content')
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('js/filtros.js') }}"></script>
+    @yield('scripts')
 </body>
 </html>
